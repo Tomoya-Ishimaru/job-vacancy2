@@ -9,6 +9,13 @@ $ chmod -R 777 laravel/storage
 $ cd laravel
 $ composer require laravel/breeze --dev
 $ php artisan breeze:install react
+
+change .env
+DB_HOST=db
+DB_DATABASE=vue
+DB_USERNAME=docker
+DB_PASSWORD=docker
+
 $ php artisan migrate
 
 laravel
