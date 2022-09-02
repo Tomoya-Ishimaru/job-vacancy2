@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\WorksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,13 +29,25 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::prefix('company')->name('company.')->group(function(){
+Route::prefix('company')->name('company.')->group(function () {
+
     Route::get('/dashboard', function () {
         return Inertia::render('Company/Dashboard');
     })->middleware(['auth:company', 'verified'])->name('dashboard');
-    // dd("aaa");
-  require __DIR__.'/company.php';
-  });
+
+    Route::get('/setting', function () {
+        return Inertia::render('Company/Setting');
+    })->middleware(['auth:company', 'verified'])->name('setting');
+
+    Route::get('/contact', function () {
+        return Inertia::render('Company/Contact');
+    })->middleware(['auth:company', 'verified'])->name('contact');
+
+    Route::resource('works', WorksController::class)
+        ->middleware(['auth:company', 'verified']);
+        
+    require __DIR__ . '/company.php';
+});
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -44,5 +57,4 @@ Route::prefix('company')->name('company.')->group(function(){
 //     require __DIR__.'/company.php';
 // });
 
-require __DIR__.'/auth.php';
-// require __DIR__.'/company.php';
+require __DIR__ . '/auth.php';

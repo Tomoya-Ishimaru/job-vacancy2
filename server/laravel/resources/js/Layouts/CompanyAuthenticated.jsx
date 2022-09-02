@@ -24,6 +24,12 @@ export default function CompanyAuthenticated({ auth, header, children }) {
                                 <NavLink href={route('company.dashboard')} active={route().current('dashboard')}>
                                     Dashboard
                                 </NavLink>
+                                <NavLink href={route('company.works.create')} active={route().current('setting')}>
+                                    Settimg
+                                </NavLink>
+                                <NavLink href={route('company.contact')} active={route().current('contact')}>
+                                    Contact
+                                </NavLink>
                             </div>
                         </div>
 
@@ -93,6 +99,16 @@ export default function CompanyAuthenticated({ auth, header, children }) {
                     <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink href={route('company.dashboard')} active={route().current('dashboard')}>
                             Dashboard
+                        </ResponsiveNavLink>
+                    </div>
+                    <div className="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink href={route('company.dashboard')} active={route().current('dashboard')}>
+                            Profile Settimg
+                        </ResponsiveNavLink>
+                    </div>
+                    <div className="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink href={route('company.dashboard')} active={route().current('dashboard')}>
+                            Contact
                         </ResponsiveNavLink>
                     </div>
 
