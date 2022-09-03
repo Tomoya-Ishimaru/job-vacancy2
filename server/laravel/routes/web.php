@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\WorksController;
+use App\Http\Controllers\ContactsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [ContactsController::class, 'index'])
+->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::resource('/contacts',ContactsController::class)
+->middleware(['auth', 'verified']);
+
 
 Route::prefix('company')->name('company.')->group(function () {
 

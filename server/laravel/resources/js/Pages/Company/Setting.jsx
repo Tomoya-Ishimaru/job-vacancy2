@@ -22,7 +22,6 @@ export default function Dashboard(props) {
     post(route('company.works.store'));
   };
   const { flash } = usePage().props
-  console.log(flash);
     return (
         <Authenticated
             auth={props.auth}
@@ -30,6 +29,8 @@ export default function Dashboard(props) {
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Setting</h2>}
         >
             <Head title="Dashboard" />
+
+
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
