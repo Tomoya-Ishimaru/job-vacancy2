@@ -1,6 +1,6 @@
-companyから労働条件等登録
-userから気になった求人情報を登録
-companyから登録しているuserのメールアドレス、gitのURLを閲覧可能
+companyから労働条件等登録<br>
+userから気になった求人情報を登録<br>
+companyから登録しているuserのメールアドレス、gitのURLを閲覧可能<br>
 
 ## Usage
 cd job-cacancy<br>
