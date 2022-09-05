@@ -13,7 +13,7 @@ class Works extends Model
         'content','min_wage','max_wage','language',
         'url','image_name','company_id'];
 
-    public function cmpany()
+    public function company()
     {
         return $this->belongsTo(Company::class);
     }

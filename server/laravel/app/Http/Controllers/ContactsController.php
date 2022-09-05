@@ -27,7 +27,7 @@ class ContactsController extends Controller
             // ->get()
             'works' =>DB::table('works')
             ->leftJoin('companies', 'works.company_id', '=', 'companies.id')
-            ->select('works.id','content', 'min_wage', 'max_wage','language','url','image_name','companies.name as company_name')
+            ->select('works.id','company_id','content', 'min_wage', 'max_wage','language','url','image_name','companies.name as company_name')
             ->get()
         ]);
     }
@@ -50,17 +50,21 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
+       
         $userId =  Auth::id();
+        // $contact = Contacts::where('user_id',$userId)->where('work_id',$request->id)->exists();
+        // dd($contact);
+        if($contact= Contacts::where('user_id',$userId)->where('work_id',$request->id)->exists()){
+            return to_route('dashboard')
+            ->with([
+                'message' => 'すでに登録済みです。'
+            ]);
+        }
         Contacts::create([
-            'company_id' => $companyId,
-            'min_wage' => $request->minWage,
-            'max_wage' => $request->maxWage,
-            'content' => $request->contents,
-            'language' => $request->language,
-            'url' => $request->url,
-            'image_name' => $fileNameToStore,
+            'user_id' => $userId,
+            'work_id' => $request->id
         ]);
-        return to_route('company.works.create')
+        return to_route('dashboard')
         ->with([
             'message' => '登録しました。'
         ]);

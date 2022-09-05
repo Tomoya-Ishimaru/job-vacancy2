@@ -8,7 +8,7 @@ export default function FlashMessage() {
         <main>
         <div>
           {flash.message && (
-            <div class="alert">{flash.message}</div>
+            <div className="p-6 bg-white border-b border-gray-200">{flash.message}</div>
           )}
         </div>
       </main>

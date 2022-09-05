@@ -1,11 +1,14 @@
 import React, { useState ,useCallback} from "react";
 import Authenticated from '@/Layouts/Authenticated';
-import { Head,usePage } from '@inertiajs/inertia-react';
+import { Head,usePage,useForm } from '@inertiajs/inertia-react';
 import Modal from "@/Components/Modal"; //Modalコンポーネントをimportする
+import { Inertia } from '@inertiajs/inertia'
+import FlashMessage from '@/Components/FlashMessage'
 
 export default function Dashboard(props) {
     const { works } = usePage().props;
-    // console.log(works);
+    
+    console.log("a");
     const [showModal, setShowModal] = useState(false);
     const [modalWork,setModalWork] =  useState({
         // company_id:'',
@@ -24,6 +27,15 @@ export default function Dashboard(props) {
         setShowModal(true);
       },[]);
     
+    const { data, setData, post, processing, errors, reset,progress } = useForm({
+        workid:''
+    });
+
+    const submit = useCallback((e,work) => {
+        e.preventDefault();
+        Inertia.post(route('contacts.store'),work);
+    },[]);  
+    
     return (
         <Authenticated
             auth={props.auth}
@@ -34,12 +46,14 @@ export default function Dashboard(props) {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    {/* <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white border-b border-gray-200">You're logged in!</div>
-                    </div>
+                    </div> */}
+
+                    <FlashMessage />
 
                     <section className="text-gray-600 body-font">
-                        <div className="container px-5 py-24 mx-auto">
+                        <div className="container px-5 py-12 mx-auto">
                             <div className="flex flex-wrap -m-4">
                             {works.map((work,index)=>{
                                 return(
@@ -59,6 +73,7 @@ export default function Dashboard(props) {
                                         </svg>
                                     </button>
                                     </div>
+                                    {/* <button className="rounded border text-right" onClick={(e)=>submit(e,work)}>問い合わせる</button> */}
                                 </div>
                                 </div>
                             </div>
@@ -67,10 +82,7 @@ export default function Dashboard(props) {
                             </div>
                         </div>
                     </section>
-                    <h2>Modal実装</h2>
-                    <button onClick={ShowModal}>Open Modal</button>
-                    {/* Appコンポーネントから子であるModalコンポーネントにpropsを渡す */}
-                    <Modal showFlag={showModal} setShowModal={setShowModal} content="親から渡された値です。" work={modalWork}/>
+                    <Modal showFlag={showModal} setShowModal={setShowModal} work={modalWork}/>
                 </div>
             </div>
         </Authenticated>

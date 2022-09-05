@@ -21,7 +21,7 @@ export default function Dashboard(props) {
 
     post(route('company.works.store'));
   };
-  const { flash } = usePage().props
+  const { flash} = usePage().props
     return (
         <Authenticated
             auth={props.auth}
@@ -47,24 +47,28 @@ export default function Dashboard(props) {
                                   <div className="relative">
                                     <label htmlFor="min" className="leading-7 text-sm text-gray-600">最低時給</label>
                                     <input type="number" id="min" name="minWage" onChange={(e) => onHandleChange(e)} defaultValue={data.minWage} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+                                    {errors.min_wage && <div>{errors.min_wage}</div>}
                                   </div>
                                 </div>
                                 <div className="p-2 w-full">
                                   <div className="relative">
                                     <label htmlFor="max" className="leading-7 text-sm text-gray-600">最高時給</label>
                                     <input type="number" id="max" name="maxWage" onChange={(e) => onHandleChange(e)} defaultValue={data.maxWage} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+                                    {errors.max_wage && <div>{errors.max_wage}</div>}
                                   </div>
                                 </div>
                                 <div className="p-2 w-full">
                                   <div className="relative">
                                     <label htmlFor="name" className="leading-7 text-sm text-gray-600">プログラミング言語</label>
                                     <input type="text" id="language" name="language" onChange={(e) => onHandleChange(e)} defaultValue={data.language} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+                                    {errors.language && <div>{errors.language}</div>}
                                   </div>
                                 </div>
                                 <div className="p-2 w-full">
                                   <div className="relative">
                                     <label htmlFor="url" className="leading-7 text-sm text-gray-600">URL</label>
                                     <input type="url" id="url" name="url" onChange={(e) => onHandleChange(e)} defaultValue={data.url} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+                                    {errors.url && <div>{errors.url}</div>}
                                   </div>
                                 </div>
                                 <div className="p-2 w-full mx-auto">
@@ -80,8 +84,9 @@ export default function Dashboard(props) {
                                 </div>
                                 <div className="p-2 w-full">
                                   <div className="relative">
-                                    <label htmlFor="contents" className="leading-7 text-sm text-gray-600">内容</label>
+                                    <label htmlFor="contents" className="leading-7 text-sm text-gray-600">内容,条件等</label>
                                     <textarea id="contents" name="contents" onChange={(e) => onHandleChange(e)} defaultValue={data.contents} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                    {errors.content && <div>{errors.content}</div>}
                                   </div>
                                 </div>
                                 <div className="p-2 w-full">
