@@ -9,6 +9,7 @@ import { Head, Link, useForm } from '@inertiajs/inertia-react';
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
+        url: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -44,6 +45,23 @@ export default function Register() {
                         value={data.name}
                         className="mt-1 block w-full"
                         autoComplete="name"
+                        isFocused={true}
+                        handleChange={onHandleChange}
+                        required
+                    />
+
+                    <InputError message={errors.name} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
+                    <Label forInput="url" value="git url" />
+
+                    <Input
+                        type="text"
+                        name="url"
+                        value={data.url}
+                        className="mt-1 block w-full"
+                        autoComplete="url"
                         isFocused={true}
                         handleChange={onHandleChange}
                         required

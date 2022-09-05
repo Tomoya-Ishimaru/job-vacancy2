@@ -3,7 +3,6 @@ import { usePage } from '@inertiajs/inertia-react'
 
 export default function FlashMessage() {
     const { flash } = usePage().props
-    console.log(flash);
     return (
         <main>
         <div>

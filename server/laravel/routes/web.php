@@ -43,9 +43,8 @@ Route::prefix('company')->name('company.')->group(function () {
         return Inertia::render('Company/Setting');
     })->middleware(['auth:company', 'verified'])->name('setting');
 
-    Route::get('/contact', function () {
-        return Inertia::render('Company/Contact');
-    })->middleware(['auth:company', 'verified'])->name('contact');
+    Route::get('/contact',[ContactsController::class, 'companyIndex'])
+    ->middleware(['auth:company', 'verified'])->name('contact');
 
     Route::resource('works', WorksController::class)
         ->middleware(['auth:company', 'verified']);

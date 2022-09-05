@@ -24,10 +24,10 @@ class WorksRequest extends FormRequest
     public function rules()
     {
         return [
-            'min_wage' => ['required'],
-            'max_wage' => ['required'],
-            'content' => ['required'],
-            'language' => ['required'],
+            'min_wage' => ['required','numeric','min:1000'],
+            'max_wage' => ['required','numeric','min:1000'],
+            'content' => ['required','max:100'],
+            'language' => ['required','max:50'],
             'url' => ['required'],
         ];
 

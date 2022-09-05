@@ -5,13 +5,13 @@ import FlashMessage from '@/Components/FlashMessage'
 
 export default function Dashboard(props) {
   const { data, setData, post, processing, errors, reset,progress } = useForm({
-    minWage: '',
-    maxWage: '',
+    min_wage: '',
+    max_wage: '',
     language: '',
     url:'',
     file:'',
     fileName:'',
-    contents:'',
+    content:'',
   });
   const onHandleChange = (event) => {
     setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
@@ -45,15 +45,15 @@ export default function Dashboard(props) {
                               <div className="flex flex-wrap -m-2">
                                 <div className="p-2 w-full">
                                   <div className="relative">
-                                    <label htmlFor="min" className="leading-7 text-sm text-gray-600">最低時給</label>
-                                    <input type="number" id="min" name="minWage" onChange={(e) => onHandleChange(e)} defaultValue={data.minWage} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+                                    <label htmlFor="min_wage" className="leading-7 text-sm text-gray-600">最低時給</label>
+                                    <input type="number" id="min_wage" name="min_wage" onChange={(e) => onHandleChange(e)} defaultValue={data.min_wage} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
                                     {errors.min_wage && <div>{errors.min_wage}</div>}
                                   </div>
                                 </div>
                                 <div className="p-2 w-full">
                                   <div className="relative">
-                                    <label htmlFor="max" className="leading-7 text-sm text-gray-600">最高時給</label>
-                                    <input type="number" id="max" name="maxWage" onChange={(e) => onHandleChange(e)} defaultValue={data.maxWage} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+                                    <label htmlFor="max_wage" className="leading-7 text-sm text-gray-600">最高時給</label>
+                                    <input type="number" id="max_wage" name="max_wage" onChange={(e) => onHandleChange(e)} defaultValue={data.max_wage} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
                                     {errors.max_wage && <div>{errors.max_wage}</div>}
                                   </div>
                                 </div>
@@ -75,17 +75,17 @@ export default function Dashboard(props) {
                                   <div className="relative">
                                     <label htmlFor="image" className="leading-7 text-sm text-gray-600">画像</label>
                                     <input type="file" id="image" name="file" multiple accept="image/png,image/jpeg,image/jpg" onChange={e => setData('image', e.target.files[0])} defaultValue={data.file} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
-                                    {progress && (
+                                    {/* {progress && (
                                       <progress value={progress.percentage} max="100">
                                         {progress.percentage}%
                                       </progress>
-                                    )}
+                                    )} */}
                                   </div>
                                 </div>
                                 <div className="p-2 w-full">
                                   <div className="relative">
-                                    <label htmlFor="contents" className="leading-7 text-sm text-gray-600">内容,条件等</label>
-                                    <textarea id="contents" name="contents" onChange={(e) => onHandleChange(e)} defaultValue={data.contents} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                    <label htmlFor="content" className="leading-7 text-sm text-gray-600">内容,条件等</label>
+                                    <textarea id="content" name="content" onChange={(e) => onHandleChange(e)} defaultValue={data.content} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                                     {errors.content && <div>{errors.content}</div>}
                                   </div>
                                 </div>
@@ -99,11 +99,7 @@ export default function Dashboard(props) {
                         </section>
                     </div>
                 </div>
-            </div>
-
-
-
-            
+            </div>    
         </Authenticated>
     );
 }

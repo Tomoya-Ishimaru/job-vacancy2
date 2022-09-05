@@ -18,6 +18,7 @@ class usersSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'test',
+            'url' => 'https://github.com/Tomoya-Ishimaru/job-vacancy',
             'email' => 'test@test.com',
             'password' => Hash::make('password123'),
         ]);

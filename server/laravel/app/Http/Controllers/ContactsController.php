@@ -114,4 +114,16 @@ class ContactsController extends Controller
     {
         //
     }
+
+    public function companyIndex()
+    {
+        $companyId =  Auth::id();
+
+        return Inertia::render('Company/Contact', [
+            'contacts' =>DB::table('contacts')
+            ->leftJoin('users', 'contacts.user_id', '=', 'users.id')
+            ->select('contacts.id','name','email', 'url')
+            ->get()
+        ]);
+    }
 }

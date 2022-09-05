@@ -50,9 +50,9 @@ class WorksController extends Controller
 
         Works::create([
             'company_id' => $companyId,
-            'min_wage' => $request->minWage,
-            'max_wage' => $request->maxWage,
-            'content' => $request->contents,
+            'min_wage' => $request->min_wage,
+            'max_wage' => $request->max_wage,
+            'content' => $request->content,
             'language' => $request->language,
             'url' => $request->url,
             'image_name' => $fileNameToStore,
