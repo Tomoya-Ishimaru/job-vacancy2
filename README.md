@@ -3,7 +3,7 @@ userから気になった求人情報を登録<br>
 companyから登録しているuserのメールアドレス、gitのURLを閲覧可能<br>
 
 ## Usage
-cd job-cacancy<br>
+cd job-cacancy/server/laravel<br>
 composer install<br>
 
 .env編集<br>
